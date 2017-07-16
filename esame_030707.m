@@ -14,6 +14,7 @@ Kc = Kc_min;
 
 ts = 1;
 wcd = 3*.63/ts; % 1.89
+wcd = 1.9;
 mr_db = 2.5;
 mfi_min = 60-5*mr_db; % 47.5
 
@@ -23,7 +24,7 @@ figure, bode(Ga1), grid
 % attenuare modulo - recuperare > 55
 
 % 2 reti attenuatrici
-md1 = 4; xd1 = 1.5;
+md1 = 4; xd1 = 1.1;
 taud1 = xd1/wcd;
 Rd1 = (1+taud1*s)/(1+taud1/md1*s);
 md2 = 3; xd2 = sqrt(md2);
@@ -33,11 +34,11 @@ Rd = Rd1*Rd2;
 Ga2 = Ga1*Rd;
 figure, bode(Ga2), grid
 [m2,f2] = bode(Ga2, wcd)
-% attenuare 12.7 - perdere < 8
+% attenuare 10.68 - perdere < 6
 
-mi = 13;
+mi = 10.7;
 figure, bode((1+s/mi)/(1+s)), grid
-xi = 100; taui = xi/wcd;
+xi = 180; taui = xi/wcd;
 Ri = (1+taui/mi*s)/(1+taui*s);
 Ga3 = Ga2*Ri;
 figure, margin(Ga3)
